@@ -23,7 +23,7 @@ These metrics are collected using Node Exporter and visualized using Grafana das
 
 # Architecture
 
-![Architecture](screenshots/nginx-stub-status.PNG)
+![Architecture](screenshots/end-to-end-devops-monitoring-architecture.png)
 
 ---
 

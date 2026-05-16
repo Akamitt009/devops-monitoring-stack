@@ -216,21 +216,15 @@ Grafana Dashboards
 
 ## Grafana Dashboard
 
-```md
 ![Grafana Dashboard](screenshots/grafana-dashboard.png)
-```
 
 ## Prometheus Targets
 
-```md
 ![Prometheus Targets](screenshots/prometheus-targets.png)
-```
 
 ## Docker Containers
 
-```md
 ![Docker Containers](screenshots/docker-containers.png)
-```
 
 ---
 

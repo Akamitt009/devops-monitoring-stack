@@ -23,30 +23,7 @@ These metrics are collected using Node Exporter and visualized using Grafana das
 
 # Architecture
 
-```text
-+-------------------+
-| Linux Server      |
-| / Docker Host     |
-+-------------------+
-          |
-          v
-+-------------------+
-| Node Exporter     |
-| Collects Metrics  |
-+-------------------+
-          |
-          v
-+-------------------+
-| Prometheus        |
-| Stores Metrics    |
-+-------------------+
-          |
-          v
-+-------------------+
-| Grafana           |
-| Visualization     |
-+-------------------+
-```
+![Architecture](screenshots/nginx-stub-status.PNG)
 
 ---
 

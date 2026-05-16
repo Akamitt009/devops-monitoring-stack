@@ -1,315 +1,343 @@
-# 🚀 Monitoring & Observability Stack using Prometheus, Grafana, Node Exporter, cAdvisor & NGINX
+# DevOps Monitoring Stack
 
-A complete real-time monitoring and observability setup built using Prometheus, Grafana, Node Exporter, cAdvisor, Docker, and NGINX on an Azure Linux VM.
-
-This project demonstrates infrastructure monitoring, container monitoring, system metrics collection, dashboard visualization, and web server monitoring using modern DevOps tools.
+Production-ready DevOps monitoring stack using Prometheus, Grafana, Docker, and Node Exporter for real-time infrastructure monitoring, observability, and alerting.
 
 ---
 
-# 📌 Project Overview
+# Project Overview
 
-This monitoring stack collects and visualizes:
+This project demonstrates a complete monitoring solution used in modern DevOps and cloud environments.
 
-- ✅ Server CPU Usage
-- ✅ Memory Usage
-- ✅ Disk Utilization
-- ✅ Network Traffic
-- ✅ Docker Container Metrics
-- ✅ NGINX Monitoring
-- ✅ Real-time Infrastructure Metrics
-- ✅ Prometheus Targets Health
-- ✅ Grafana Dashboards
+The stack collects system-level metrics such as:
 
----
+* CPU Usage
+* Memory Usage
+* Disk Usage
+* Network Statistics
+* Server Health
+* Container Monitoring
 
-# 🛠️ Tech Stack
-
-| Tool | Purpose |
-|------|----------|
-| Prometheus | Metrics Collection |
-| Grafana | Visualization Dashboard |
-| Node Exporter | Linux System Metrics |
-| cAdvisor | Docker Container Monitoring |
-| Docker | Container Runtime |
-| NGINX | Web Server Monitoring |
-| Azure VM | Hosting Environment |
+These metrics are collected using Node Exporter and visualized using Grafana dashboards.
 
 ---
 
-# ☁️ Azure Infrastructure
-
-- Azure Linux Virtual Machine
-- Ubuntu Server
-- Docker Installed
-- Public IP Enabled
-- Monitoring Ports Exposed
-
----
-
-# 📂 Project Architecture
+# Architecture
 
 ```text
-Node Exporter ---> Prometheus ---> Grafana
-cAdvisor -------> Prometheus ---> Grafana
-NGINX ----------> Prometheus ---> Grafana
++-------------------+
+| Linux Server      |
+| / Docker Host     |
++-------------------+
+          |
+          v
++-------------------+
+| Node Exporter     |
+| Collects Metrics  |
++-------------------+
+          |
+          v
++-------------------+
+| Prometheus        |
+| Stores Metrics    |
++-------------------+
+          |
+          v
++-------------------+
+| Grafana           |
+| Visualization     |
++-------------------+
 ```
 
 ---
 
-# ⚙️ Components Configured
+# Tech Stack
 
-## 🔹 Node Exporter
+| Tool           | Purpose                       |
+| -------------- | ----------------------------- |
+| Docker         | Containerization              |
+| Docker Compose | Multi-container orchestration |
+| Prometheus     | Metrics collection            |
+| Grafana        | Visualization dashboards      |
+| Node Exporter  | Linux metrics exporter        |
+| Linux          | Server environment            |
 
-Used for collecting:
+---
 
-- CPU Metrics
-- RAM Metrics
-- Disk Usage
-- Network Statistics
-- System Load
+# Features
 
-Metrics Endpoint:
+* Real-time server monitoring
+* Infrastructure observability
+* Dockerized monitoring stack
+* Grafana dashboard integration
+* Prometheus metrics scraping
+* CPU and Memory monitoring
+* Disk and Network monitoring
+* Easy deployment using Docker Compose
+* Beginner-friendly DevOps architecture
+
+---
+
+# Folder Structure
 
 ```bash
-http://<SERVER-IP>:9100/metrics
-```
-
----
-
-## 🔹 Prometheus
-
-Configured Prometheus to scrape metrics from:
-
-- Node Exporter
-- cAdvisor
-
-Prometheus Targets Page:
-
-```bash
-http://<SERVER-IP>:9090/targets
-```
-
----
-
-## 🔹 Grafana
-
-Integrated Grafana with Prometheus datasource and imported dashboards for visualization.
-
-Dashboard Features:
-
-- CPU Monitoring
-- Memory Monitoring
-- Disk Monitoring
-- Network Monitoring
-- Container Metrics
-
-Grafana URL:
-
-```bash
-http://<SERVER-IP>:3000
-```
-
----
-
-## 🔹 cAdvisor
-
-Used for Docker container monitoring.
-
-Collected:
-
-- Container CPU Usage
-- Container RAM Usage
-- Container Network Usage
-- Docker Container Statistics
-
-cAdvisor URL:
-
-```bash
-http://<SERVER-IP>:8081
-```
-
----
-
-## 🔹 NGINX Monitoring
-
-Configured NGINX stub_status module for monitoring.
-
-NGINX Metrics URL:
-
-```bash
-http://<SERVER-IP>:8080/stub_status
-```
-
----
-
-# 📸 Project Screenshots
-
-## 🔹 Node Exporter Metrics Endpoint
-
-![Node Exporter Metrics](screenshots/node-exporter-metrics.png)
-
----
-
-## 🔹 Prometheus Targets Dashboard
-
-![Prometheus Targets](screenshots/prometheus-targets.png)
-
----
-
-## 🔹 Grafana Node Exporter Dashboard
-
-![Grafana Dashboard](screenshots/grafana-node-exporter-dashboard.png)
-
----
-
-## 🔹 NGINX Stub Status Monitoring
-
-![NGINX Monitoring](screenshots/nginx-stub-status.png)
-
----
-
-## 🔹 cAdvisor Container Monitoring
-
-![cAdvisor](screenshots/cadvisor-container-monitoring.png)
-
----
-
-# 🐳 Docker Containers Used
-
-| Container | Purpose |
-|-----------|----------|
-| Prometheus | Metrics Collection |
-| Grafana | Dashboard Visualization |
-| cAdvisor | Container Monitoring |
-| NGINX | Web Server |
-| Node Exporter | System Monitoring |
-
----
-
-# 📁 Project Structure
-
-```text
-monitoring-observability-stack/
-│
-├── screenshots/
-│   ├── node-exporter-metrics.png
-│   ├── prometheus-targets.png
-│   ├── grafana-node-exporter-dashboard.png
-│   ├── nginx-stub-status.png
-│   └── cadvisor-container-monitoring.png
-│
-├── prometheus.yml
+.
 ├── docker-compose.yml
+├── prometheus/
+│   └── prometheus.yml
+├── grafana/
+│   └── provisioning/
+├── screenshots/
+│   ├── grafana-dashboard.png
+│   ├── prometheus-targets.png
+│   └── docker-containers.png
 ├── README.md
-└── dashboards/
+└── .gitignore
 ```
 
 ---
 
-# ⚡ Prometheus Configuration
+# Prerequisites
+
+Before starting, ensure the following are installed:
+
+* Docker
+* Docker Compose
+* Git
+
+---
+
+# Installation & Setup
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/Akamitt009/devops-monitoring-stack.git
+cd devops-monitoring-stack
+```
+
+---
+
+## 2. Start Monitoring Stack
+
+```bash
+docker-compose up -d
+```
+
+---
+
+## 3. Verify Running Containers
+
+```bash
+docker ps
+```
+
+Expected containers:
+
+* Prometheus
+* Grafana
+* Node Exporter
+
+---
+
+# Access Services
+
+| Service       | URL                                                            |
+| ------------- | -------------------------------------------------------------- |
+| Grafana       | [http://localhost:3000](http://localhost:3000)                 |
+| Prometheus    | [http://localhost:9090](http://localhost:9090)                 |
+| Node Exporter | [http://localhost:9100/metrics](http://localhost:9100/metrics) |
+
+---
+
+# Default Grafana Login
+
+```text
+Username: admin
+Password: admin
+```
+
+---
+
+# Prometheus Configuration
+
+Example configuration:
 
 ```yaml
 global:
   scrape_interval: 15s
 
 scrape_configs:
-  - job_name: 'node_exporter'
+  - job_name: 'node-exporter'
     static_configs:
-      - targets: ['localhost:9100']
-
-  - job_name: 'cadvisor'
-    static_configs:
-      - targets: ['localhost:8081']
+      - targets: ['node-exporter:9100']
 ```
 
 ---
 
-# 🚀 How to Run the Project
+# Docker Compose Configuration
 
-## 1️⃣ Clone Repository
+```yaml
+version: '3'
+
+services:
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+
+  node-exporter:
+    image: prom/node-exporter
+    ports:
+      - "9100:9100"
+```
+
+---
+
+# Monitoring Flow
+
+```text
+Linux Server Metrics
+        ↓
+Node Exporter
+        ↓
+Prometheus
+        ↓
+Grafana Dashboards
+```
+
+---
+
+# Screenshots
+
+## Grafana Dashboard
+
+```md
+![Grafana Dashboard](screenshots/grafana-dashboard.png)
+```
+
+## Prometheus Targets
+
+```md
+![Prometheus Targets](screenshots/prometheus-targets.png)
+```
+
+## Docker Containers
+
+```md
+![Docker Containers](screenshots/docker-containers.png)
+```
+
+---
+
+# Commands Cheat Sheet
+
+## Start Services
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/monitoring-observability-stack.git
+docker-compose up -d
 ```
 
----
-
-## 2️⃣ Move into Project Directory
+## Stop Services
 
 ```bash
-cd monitoring-observability-stack
+docker-compose down
 ```
 
----
-
-## 3️⃣ Start Containers
+## Restart Services
 
 ```bash
-docker compose up -d
+docker-compose restart
 ```
 
----
-
-## 4️⃣ Verify Running Containers
+## Check Logs
 
 ```bash
-docker ps
+docker logs prometheus
 ```
 
 ---
 
-# 🌐 Service Ports
+# Future Improvements
 
-| Service | Port |
-|---------|------|
-| Grafana | 3000 |
-| Prometheus | 9090 |
-| Node Exporter | 9100 |
-| cAdvisor | 8081 |
-| NGINX | 8080 |
+Planned enhancements:
 
----
-
-# 📊 Monitoring Features Implemented
-
-- Real-time Infrastructure Monitoring
-- Docker Container Monitoring
-- Prometheus Metrics Collection
-- Grafana Visualization
-- NGINX Status Monitoring
-- Azure VM Monitoring
-- Linux Server Observability
+* Alertmanager integration
+* Slack alert notifications
+* Email alerting
+* Loki log aggregation
+* cAdvisor container monitoring
+* Kubernetes monitoring
+* Blackbox Exporter
+* SSL and reverse proxy setup
+* Production deployment on cloud VM
 
 ---
 
-# 🔥 Key Learnings
+# Real-World Use Cases
 
-- Prometheus Metrics Scraping
-- Grafana Dashboard Management
-- Docker Monitoring
-- Linux System Monitoring
-- Observability Concepts
-- NGINX Metrics Collection
-- Azure VM Deployment
-- Infrastructure Monitoring
+This project can be used for:
 
----
-
-# 🎯 Future Improvements
-
-- AlertManager Integration
-- Loki Log Monitoring
-- Promtail Log Collection
-- Kubernetes Monitoring
-- Slack Alerts
-- Email Notifications
+* Infrastructure Monitoring
+* DevOps Demonstrations
+* NOC Monitoring
+* Cloud Server Observability
+* Docker Environment Monitoring
+* Learning Prometheus & Grafana
+* Interview Portfolio Projects
 
 ---
 
-# 👨‍💻 Author
+# Skills Demonstrated
+
+* Docker
+* Monitoring & Observability
+* Prometheus
+* Grafana
+* Linux Administration
+* Infrastructure Monitoring
+* Metrics Collection
+* DevOps Fundamentals
+
+---
+
+# Resume Project Description
+
+Built a production-style monitoring stack using Prometheus, Grafana, Docker, and Node Exporter to monitor infrastructure metrics including CPU, memory, disk usage, and system health with real-time visualization dashboards.
+
+---
+
+# Author
 
 Amit Kumar
 
+GitHub:
+
+[https://github.com/Akamitt009](https://github.com/Akamitt009)
+
 ---
 
-# ⭐ If you found this project useful, give it a star on GitHub!
+# License
+
+This project is licensed under the MIT License.
+
+---
+
+# Support
+
+If you found this project useful:
+
+* Star the repository
+* Fork the project
+* Connect on LinkedIn
+* Share feedback
+
+---
+
+# DevOps Monitoring Stack
+
+Modern infrastructure monitoring solution built using open-source DevOps tools.

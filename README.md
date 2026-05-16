@@ -216,17 +216,31 @@ Grafana Dashboards
 
 ## Grafana Dashboard
 
-![Grafana Dashboard](screenshots/grafana-dashboard.png)
+![Grafana Dashboard](screenshots/grafana-node-exporter-dashboard.PNG)
+
+---
 
 ## Prometheus Targets
 
-![Prometheus Targets](screenshots/prometheus-targets.png)
-
-## Docker Containers
-
-![Docker Containers](screenshots/docker-containers.png)
+![Prometheus Targets](screenshots/prometheus-targets.PNG)
 
 ---
+
+## Node Exporter Metrics
+
+![Node Exporter Metrics](screenshots/node-exporter-metrics.PNG)
+
+---
+
+## Nginx Stub Status
+
+![Nginx Stub Status](screenshots/nginx-stub-status.PNG)
+
+---
+
+## cAdvisor Container Monitoring
+
+![cAdvisor](screenshots/cadvisor-container-monitoring.PNG)
 
 # Commands Cheat Sheet
 
